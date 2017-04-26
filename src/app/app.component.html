@@ -1,3 +1,42 @@
 <h1>
   {{title}}
+  <hr>
 </h1>
+<div>
+  <form [formGroup]="myForm" novalidate (submit)="Added()"> 
+    <div>
+      <label>ไอดี : </label>
+      <input type="text" formControlName="id">
+    </div>
+    <div>
+      <label>ชื่อ : </label>
+      <input type="text" formControlName="name">
+    </div>
+    <div>
+      <label>อายุ : </label>
+      <input type="text" formControlName="age">
+    </div>
+    <div>
+      <input type="button" class="w3-button w3-teal" (click)="Update()" value="แก้ไขข้อมูล">
+      <input type="submit" class="w3-button w3-blue " value="เพิ่มข้อมูล">
+    </div>
+  </form>
+</div>
+<div class="table w3-table">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Manage</th>
+  </tr>
+  <tr *ngFor="let item of dataArr">
+    <td>{{item.id}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.age}}</td>
+    <td>
+      <button class="w3-button w3-red" (click)="Delete(item)">ลบ</button>
+      <button class="w3-button w3-teal" (click)="Edit(item)">แก้ไข</button>
+    </td>
+  </tr>
+</div>
+
